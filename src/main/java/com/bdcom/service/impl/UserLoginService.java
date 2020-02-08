@@ -3,11 +3,12 @@ package com.bdcom.service.impl;
 import com.bdcom.dao.mapper.UserMapper;
 import com.bdcom.entity.User;
 import com.bdcom.service.IUserLoginService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
-
+@Slf4j
 @Service
 public class UserLoginService implements IUserLoginService{
 
@@ -30,6 +31,7 @@ public class UserLoginService implements IUserLoginService{
         user.setUsername(username);
         user.setPassword(password);
         user.setAge(age);
+        log.info("register new user:"+username );
         return usermapper.insert(user);
     }
 }
