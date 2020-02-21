@@ -48,6 +48,7 @@ public class TR069Client {
 	}
 
 	private Map<String, String> params = new TreeMap<String, String>();
+	private Map<String, String> informParameterList=new TreeMap<String ,String>();
 
 	private static String softwareVersionName = "InternetGatewayDevice.DeviceInfo.SoftwareVersion";
 	private static String uptimeName = "InternetGatewayDevice.DeviceInfo.UpTime";
@@ -198,8 +199,17 @@ public class TR069Client {
 		return nextConnectTms;
 	}
 
+	public Map<String, String> getInformParameterList() {
+		return informParameterList;
+	}
+
+	public void setInformParameterList(Map<String, String> informParameterList) {
+		this.informParameterList = informParameterList;
+	}
+
 	public String getNextConnectType() {
 		return nextConnectType;
+
 	}
 
 	public void setNextConnectType(String nextConnectType) {

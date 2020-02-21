@@ -9,6 +9,7 @@ import com.bdcom.tr069.cpe.TR069Client;
 import com.bdcom.tr069.monitor.Status;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class Inform {
 
@@ -108,6 +109,13 @@ public class Inform {
 		message.append("\t\t\t\t\t<Name>.ExternalIPAddress</Name>\n");
 		message.append("\t\t\t\t\t<Value xsi:type=\"xsd:string\">10.0.0.138</Value>\n");
 		message.append("\t\t\t\t</ParameterValueStruct>\n");
+		//添加inform的自定义上报数据
+		for (Map.Entry<String, String> entry : tr069Client.getInformParameterList().entrySet()) {
+			message.append("\t\t\t\t<ParameterValueStruct>\n");
+			message.append("\t\t\t\t\t<Name>"+entry.getKey()+"</Name>\n");
+			message.append("\t\t\t\t\t<Value xsi:type=\"xsd:string\">" + entry.getValue() + "</Value>\n");
+			message.append("\t\t\t\t</ParameterValueStruct>\n");
+		}
 		message.append("\t\t\t</ParameterList>\n");
 		message.append("\t\t</cwmp:Inform>\n");
 		message.append("\t</soapenv:Body>\n");
